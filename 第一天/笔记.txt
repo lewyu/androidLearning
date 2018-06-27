@@ -1,0 +1,123 @@
+吴昊 wuh_jn@hqyj.com
+Java --> Android
+
+前期：以Java语法为基础，进行Android相关的学习。
+后期：运用前期所学知识，自行设计交互和编写代码完成最终的项目。
+
+VNC 192.168.201.64
+
+IDE 继承开发环境
+教学（学校）：Eclipse，上个时代的Android开发工具，谷歌在Android5.1之后不再提供支持。
+开发（企业）：Android Studio，功能强大，官方支持，不稳定。
+
+第一次使用集成的Android Eclipse时要注意，workspace一定不要使用默认的。
+
+程序运行在手机上
+1. 虚拟机（在Windows系统中虚拟一台Android手机，建议使用谷歌官方的虚拟机）
+2. 真机（不消耗电脑资源，强烈建议电脑配置低的同学使用，需要使用手机数据线）
+
+虚拟机：
+1.谷歌原生（ARM 、X86）：如果虚拟ARM架构的Android手机，性能很低。 
+2.第三方：基于Virtual Box：夜神、海马玩、蓝叠、Genymotion（需要破解）。
+
+原生相对开发稳定，adb环境不容易冲突。
+第三方（特别指国内的游戏第三方）：性能尚可，但是容易adb冲突，不够稳定。
+
+sdk 
+sdk\extras\google\usb_driver 内置Google官方提供的真机调试驱动
+sdk\platforms 内置sdk支持的开发版本
+sdk\platform-tool\adb.exe 		Android Debug Bridge（安卓调试桥）
+
+jar包：java的代码的打包，用于给别人用java代码而不能看到
+
+阿里巴巴矢量图库
+http://www.iconfont.cn/plus
+
+Eclipse Android Project 项目结构
+--src文件夹：存放类文件（Java代码）的文件夹
+--gen文件夹：不要动！是项目自动生成的文件夹，内置的R.java文件内容是自动生成的所有资源的id，为了保证R文件资源及时生成，在离开每个编辑页面的时候,点击一下Ctrl + S
+--assets文件夹：存放一些非主流资源
+--bin文件夹：apk安装包会在这个文件夹下生成
+--libs文件夹：第三方jar包存放在这个文件夹
+--res文件夹：主流资源文件夹
+		--drawable：存放不同分辨率的贴图	
+		--layout：布局文件夹，用于UI的初始设定
+--AndroidManifest.xml：清单文件，存放项目相关的配置参数
+
+只要是可见的（布局、控件等）就必须要有宽和高的概念。
+
+资源命名：
+1.避免特殊符号
+2.避免空格
+3.避免数字开头
+4.避免大写英文
+
+尽量使用小写英文和下划线分割，可以在非开头的位置使用数字
+
+Eclipse代码补全：Alt + /
+
+所有的宽度和长度的单位使用dp
+
+android:layout_width="match_parent"  设置控件或容器的宽度，可选值：fill_parent（填满父控件）、match_parent(同上，建议使用)、wrap_content（根据内部元素适应）
+android:layout_height="match_parent" 设置控件或容器的高度，可选值同上。
+android:background="@drawable/back_ground" 设置背景
+
+外边距margin
+android:layout_margin="10dp" 设置四个方向的外边距，也可以单独设置方向
+android:layout_marginRight="10dp"  右内边距
+android:layout_marginLeft="10dp"   左外边距
+android:layout_marginTop="10dp"    上外边距
+android:layout_marginBottom="10dp" 下外边距
+
+内边距padding
+android:padding="60dp" 设置四个方向的内边距，也可以单独设置方向
+android:paddingLeft="10dp" 左内边距
+android:paddingRight="10dp" 右内边距
+android:paddingTop="10dp"    下内边距
+android:paddingBottom="10dp" 上内边距
+
+默认控件的重力都是在左上角的
+android:gravity="right|bottom"   设置子控件在布局中的重力方向
+
+布局layout
+1.LinearLayout(线程布局)
+android:orientation="vertical"	设置线性布局的方向，可选值horizontal（水平）、vertical（垂直）
+
+2.RelativeLayout（相对布局）
+android:id="@+id/text1" 前提是有参照物，需要给参照物命名（id）
+android:layout_toRightOf="@id/text1"    在某个控件的右边
+android:layout_below="@id/text1"	在某个控件的下方
+android:layout_toLeftOf="@id/text1"	在某个控件的左边
+android:layout_above="@id/text1"        在某个控件的上方
+
+android:layout_alignLeft="@id/text2"	对齐某个控件的左边
+android:layout_alignRight="@id/text2"   对齐某个控件的右边
+android:layout_alignTop="@id/text2"     对齐某个控件的顶部
+android:layout_alignBottom="@id/text2"  对齐某个控件的底部
+
+android:layout_alignParentBottom="true"  对齐父控件的底部
+android:layout_alignParentTop="true"     对齐父控件的顶部
+android:layout_alignParentLeft="true"    对齐父控件的左边
+android:layout_alignParentRight="true"   对齐父控件的右边
+
+android:layout_centerVertical="true"     在父控件的竖直中心
+android:layout_centerHorizontal="true"   在父控件的水平中心
+android:layout_centerInParent="true"     在父控件的中心
+
+3.FrameLayout（帧布局）
+所有的控件依次从下往上叠加，默认都在左上角
+
+
+按照比例分配，必须使用线性布局（LinearLayout）
+如果要按照比例分配高度，那么线性布局的方向必须是垂直的。
+如果要按照比例分配宽度，那么线性布局的方向必须是水平的。
+android:layout_weight="1"   设置权重
+
+布局嵌套
+布局和布局之间可以任意的嵌套，套在内部的布局相当于外部布局的一个子元素
+
+布局严格上不算编程，只有多练习才能熟练的使用。
+
+
+
+

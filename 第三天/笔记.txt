@@ -1,0 +1,80 @@
+Java Tips：
+一个类如果没有手动写构造器的话，编译器会自动添加一个没有参数的构造器，并且这个构造器的方法体没有内容。
+如果手动写了有参构造器，那么编译器不会自动再添加相关的任何构造器。
+子类实例化是伴随父类实例化的，而构造器作为实例化的入口，一定要调用。所以父类如果只有有参构造器，子类必须在其构造器中通过super关键字来调用父类的构造器。
+
+
+Activity（活动，页面）
+如果要使用一个Activity，必须在清单文件中进行注册。
+
+自定义Activity
+1.在清单文件中，注册Activity
+2.在对应的包名下建立对应的类文件
+3.继承Activity相关类
+4.覆盖父类的OnCreate方法
+5.在onCreate方法中设置布局文件
+
+显式跳转
+
+隐式跳转
+先给要跳转的Activity在清单文件的intent-filter节点中定义一个“别名”，即action
+
+在App内部进行跳转，两者二选其一，显式跳转使用较多。
+跨App跳转，使用隐式跳转。
+
+startActivity
+
+startActivityForResult
+
+Bitmap是Android中一种虚拟的图片格式，可以将具体的图片转换为java中的一个对象。
+
+----------------Activity加载---------------------
+D/MainActivity( 5839): onCreate
+D/MainActivity( 5839): onStart
+D/MainActivity( 5839): onResume
+---------------前台运行状态----------------------
+---------------点击返回键------------------------
+D/MainActivity( 5839): onPause
+D/MainActivity( 5839): onStop
+D/MainActivity( 5839): onDestroy
+-------------------销毁--------------------------
+
+
+----------------Activity加载---------------------
+D/MainActivity( 5839): onCreate
+D/MainActivity( 5839): onStart
+D/MainActivity( 5839): onResume
+---------------前台运行状态----------------------
+----------------点击Home键-----------------------
+D/MainActivity( 5839): onPause
+D/MainActivity( 5839): onStop
+-------------------后台运行状态------------------
+-------------------从后台切换回前台--------------
+D/MainActivity( 5839): onStart
+D/MainActivity( 5839): onResume
+------------------前台运行状态-------------------
+------------------其他的Activity占用前台----------
+D/MainActivity( 5839): onPause
+D/MainActivity( 5839): onStop
+------------------后台运行状态---------------------
+------------------在后台内存不足，被手机杀死进程-------
+没有任何生命周期的回调，下次再进入此Activity的时候重新从OnCreate再来
+
+onCreate：每个Activity实例在加载的时候，第一个执行的生命周期，且只执行一次。表示Activity的创建。
+此生命周期适合执行初始化的相关代码
+onStart：Activity可见的回调方法
+onResume：Activity获得屏幕焦点，完全前台可见的回调方法。适合执行Activity后台到前台需要执行的代码。
+onPause：Activity开始失去屏幕焦点的那一刻执行,可以执行切换到后台的轻量级回收动作，不可执行过度繁重的代码。
+onStop：Activity完全失去屏幕焦点（完全不可见）时执行，可以执行切换到后台稍微繁重的回收动作。
+onDestroy：Activity销毁，执行最后的回收动作（只需要执行一次），例如传感器的注销、广播接收的注销等。
+
+onCreate/onDestroy   创建和销毁
+onStart/onResume     可见和不可见
+onPause/onStop       获得屏幕焦点和失去屏幕焦点
+
+补充：
+关闭Activity的方法是 finish()
+
+
+
+

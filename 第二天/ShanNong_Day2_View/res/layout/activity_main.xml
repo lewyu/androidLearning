@@ -1,0 +1,40 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.example.shannong_day2_view.MainActivity" >
+
+    <TextView
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:gravity="center"
+        android:lines="3"
+        android:maxLength="13"
+        android:text="www.baidu.comsdhkfjksdhfjksdhfjksdhjkfhsdjkfhsdjkhfjksdhfkjsdhfjksdfhklusdhfljksdahfjklasgfjklsgafhjasdgfhjgsdhfgsdhjafghjasfgyhjkgf777"
+        android:textColor="#FFA8D0"
+        android:textSize="40sp"
+        android:textStyle="bold|italic" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="这是一个按钮" />
+
+    <ImageView
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:src="@drawable/ic_launcher" />
+
+    <ImageButton
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:src="@drawable/ic_launcher" />
+    
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="请在此输入银行卡密码"
+        android:password="true" />
+
+</LinearLayout>

@@ -1,0 +1,91 @@
+TextView 文本显示控件
+android:autoLink="web"   设置不同类型的文本超链接
+android:gravity="center"   设置文字的重力方向
+android:lines="3"        最大显示行数
+android:maxLength="13"	 文字最长的长度
+android:textStyle="bold|italic"   字体显示风格，默认为normal
+android:textColor="#FFA8D0"	文字颜色
+android:textSize="40sp"		文字大小（单位统一使用sp）
+
+Button 按钮
+继承自TextView拥有巨大多数TextView的属性，同时也拥有自己的差别（Button文字默认居中、Button有默认的点击效果等）
+
+ImageView 图片显示控件
+android:src="@drawable/ic_launcher"	显示图片
+
+ImageButton 图片按钮
+android:src="@drawable/ic_launcher"	显示图片
+
+EditText 文本输入框
+继承自TextView，拥有绝大多数TextView的属性
+android:hint="请在此输入银行卡密码" 	提示文字
+android:password="true"			密文显示
+
+RadioGroup 单选编组，内部的单选相互制约
+RadioButton 单选选项
+
+CheckBox 多选框，不受RadioGroup的制约
+android:checked="true"   默认选中
+
+ProgressBar 进度条
+默认的样式是原型的等待旋转的圈
+style="?android:attr/progressBarStyleHorizontal"	样式为进度条
+android:max="100"					最大进度值为100
+android:progress="40"					当前进度
+
+SeekBar 可以拖动的进度条
+是ProgressBar的子类
+
+监听器（Listener）
+要给某个控件设置监听器，监听器会监听用户和这个控件的交互事件，一旦触发，做出反馈。
+
+匿名内部类：
+一个没有名字的类，隐式地继承（实现）了一个类（接口），并且生成了这个没有名字的类的对象。
+
+设置点击事件的监听器 法一，更适合单个控件的监听：
+1.控件对象调用setOnClickListene方法
+2.使用匿名内部类传入OnClickListener类型的参数
+3.在OnClick方法中添加点击控件后要执行的代码
+
+设置点击事件的监听器 法二，适合多个控件的监听：
+1.控件对象调用setOnClickListener方法
+2.使用一个类来实现OnClickListener接口，通常这个类使用的是当前类
+3.实现接口中的抽象方法
+4.在OnClick方法中添加点击控件后要执行的代码（如果是多个控件需要进行判断）
+5.在OnClickListener方法中传入this参数
+
+
+在Android中，所有（99.9%）的以onXXXXX命名的方法，都是回调方法。
+回调方法：现在阶段可以如下理解，在特定的时机触发的方法（不是代码中主动即时调用）
+
+Context 上下文，是Activity（页面）的父类，因此需要Context类型的参数时，都可以传入Activity的对象。
+
+Log日志
+打Log：所有的App都在输出Log（只有开发者能看到，用户看不到）
+
+捕捉Log的方式
+方法一：使用Eclipse来捕捉，优点是支持中文，缺点是集成版的经常捕捉不到，多窗口支持差。
+方法二：直接使用adb（Android Debug Bridge 安卓调试桥），集成在sdk中（sdk\platform-tools添加到环境变量的系统变量Path中），优点是多窗口支持好、效率高；缺点是中文支持差。
+常见的adb命令：
+adb devices    					列出正在连线中的Android设备
+adb logcat -s TAG名称（如MainActivity）  	筛选对应的TAG名称的Log
+adb logcat -c TAG名称				清空对应额TAG名称的Log在cmd中的显示
+
+事件的传递
+一个回调方法如果返回值的类型是boolean类型，就会涉及到事件的传递，那么如果返回true表示在本层中拦截此事件，如果是false表示继续向下传递。
+
+Java Tips:
+类A在继承类B时，如果类B没有无参构造器，类A必须手动提供一个相应的构造器来通过super关键字来调用类B的构造器。
+
+ProgressDialog  ---extends--->  AlertDialog  ---extends--->  Dialog  ---implements--->  DialogInterface
+
+
+
+
+
+
+
+
+
+
+
