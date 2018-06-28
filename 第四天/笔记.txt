@@ -1,0 +1,44 @@
+Activity的加载模式
+1.标准模式（standard）
+android:launchMode="standard"
+这种模式是默认的，每次跳转一个Acitivity就生成一个Activity的实例。
+
+2.栈顶复用模式（singleTop）
+android:launchMode="singleTop"
+当下一个要跳转的页面刚好是当前前台显示的页面时，此模式会复用该实例，而不会生成一个新的实例。其他情况下等同标准模式。
+重用：没有新的实例生成，重用时onPause --> onResume，实际上就是页面失去屏幕焦点后迅速获得屏幕焦点，从来没有退到后台。
+
+3.栈内复用模式（singleTask）
+android:launchMode="singleTask"
+重用（分两种情况）：第一种情况是，要跳转的页面恰好之前启动过，且在后台，会发生重用，且在其栈上面的其他Activity都会被销毁。重用时onStart-->onResume，即直接从前台切换到后台。
+			第二种情况同栈顶复用。
+
+4.单例模式(singleInstance)
+独自在一个栈，且永远都只有一个实例。
+在退出的时候，程序都是先清空一个栈后再切换到另外一个栈。
+
+ListView 滑动列表
+1.ArrayAdapter
+最简单的一种适配器，只支持每个Item单个文字控件的显示。
+item的布局文件中TextView的id必须是 android:id="@+id/text1"
+
+2.SimpleAdapter
+可以做出任何显示效果，网络图片加载受限，无法对Item内部的单独控件进行控制。
+数据源使用复杂。
+
+项目内置的贴图（drawable文件夹下）有严格的命名规范：
+1.不能包含特殊符号￥……%￥%……￥
+2.不能使用大写英文
+3.不可以用数字开头
+4.通常使用英文和下划线分割
+5.不得包含空格
+
+
+
+
+
+
+
+
+
+
