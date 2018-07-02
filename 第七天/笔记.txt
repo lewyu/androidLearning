@@ -1,0 +1,14 @@
+数据持久化
+1.SharedPreferences
+	Android中自带的轻量级存储类，适合存储一些零散的小数据。
+	是以键值对的方式以xml格式存储数据的，这也是其效率低的原因之一。
+	存储路径为 data/data/程序包名/shared_prefs/名称.xml
+
+2.File
+	Java中的API接口，主要使用流来读取和存储文件到相应的存储介质。
+	app默认的缓存路径为： /data/data/程序包名/cache
+
+3.SQLite
+	数据库，移动设备往往需要小巧的轻量级数据库。
+	SQLiteOpenHelper
+	存储路径为：/data/data/程序包名/databases/数据库文件
