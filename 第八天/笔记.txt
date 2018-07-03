@@ -1,0 +1,55 @@
+WebView
+
+在Android中，很多特殊的操作需要申请相关权限，在Android6.0以下只需要在清单文件中申请权限。
+Android 6.0之后，还需要在Java代码中动态申请权限。
+
+onKeyDown支持所有按键的按下回调，但是有几个按键不可以被拦截：POWER键、HOME键等
+
+HTTP请求
+1.HttpClient(Android 6.0之前)
+2.HttpUrlConnection(Android 4.4之后)
+
+"GET"请求
+https://www.amazon.cn/dp/B0791VZ8TW/ref=cngwdyfloorv2_recs_0?pf_rd_p=faebe6e1-7965-44dc-bcbc-31f4ed31751b&pf_rd_s=desktop-2&pf_rd_t=36701&pf_rd_i=desktop&pf_rd_m=A1AJ19PSB66TGU&pf_rd_r=G89GWXR7X8174RAPAXYC&pf_rd_r=G89GWXR7X8174RAPAXYC&pf_rd_p=faebe6e1-7965-44dc-bcbc-31f4ed31751b
+https://www.jd.com/?cu=true&utm_source=baidu-pinzhuan&utm_medium=cpc&utm_campaign=t_288551095_baidupinzhuan&utm_term=0f3d30c8dba7459bb52f2eb5eba8ac7d_0_f91ddaf2488249c58a013903038fa638
+优点：操作简单，速度较快
+缺点：不安全，参数长度受限
+
+“POST”请求 
+https://sale.jd.com/act/QHRjfScvC35.html
+优缺点与GET请求相反
+
+请求地址：http://v.juhe.cn/toutiao/index
+请求参数：type=tiyu&key=5465c4c5d60f72c3d756a9f1a9b8437d
+请求方式：GET
+例如：http://v.juhe.cn/toutiao/index?type=tiyu&key=5465c4c5d60f72c3d756a9f1a9b8437d
+
+
+返回的数据格式JSON，另外常见的格式还有XML。
+数据来源 
+result -- data -- 
+
+uniquekey:每条新闻唯一识别码
+title：新闻标题
+date：发布日期
+category：新闻类别
+author_name：新闻来源
+url：新闻链接
+thumbnail_pic_s：新闻图片
+
+app网络数据功能主要流程
+第一步，发送GET请求到服务器：http://v.juhe.cn/toutiao/index?type=tiyu&key=5465c4c5d60f72c3d756a9f1a9b8437d
+第二步，服务器：JSON数据
+第三步，解析JSON数据
+第四步，处理数据，持久化或者UI展示或者变量存储等。
+
+网络请求必须全程都在子线程中进行，完成后通知主线程UI刷新。
+
+StringBuffer和StringBuilder更适合做长字符串的拼接。
+StringBuffer是非线程安全的。
+StringBuilder是线程安全的。
+
+
+
+
+
